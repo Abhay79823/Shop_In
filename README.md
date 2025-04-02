@@ -1,12 +1,29 @@
-# React + Vite
+# ShopIn  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ShopIn is a simple and modern e-commerce web application built using **React** and **Vite**. It allows users to browse and shop for products with a seamless experience.  
 
-Currently, two official plugins are available:
+##  Live Demo  
+ [View ShopIn Online](https://abhay79823.github.io/ShopIn/)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Features  
+-  Fast and optimized with **Vite**  
+-  Responsive UI for all devices  
+-  Dynamic product browsing  
+-  Smooth user experience  
 
-## Expanding the ESLint configuration
+##  Installation & Setup  
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Clone the Repository**  
+```sh
+-> git clone https://github.com/Abhay79823/ShopIn.git
+-> cd ShopIn
+````
+### 2.Install Dependencies and run Locally
+```sh
+-> npm install
+-> npm run dev
+```
+#### To deploy your project, run:
+```sh
+-> npm run deploy
+```
