@@ -16,7 +16,7 @@ const ProductDetail = () => {
         setProduct(response.data);
         setLoading(false);
       })
-      .catch(() => {  // Removed 'err' since it's not used
+      .catch(() => { 
         setError('Failed to fetch product details.');
         setLoading(false);
       });
