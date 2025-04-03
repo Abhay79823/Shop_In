@@ -16,7 +16,7 @@ const ProductDetail = () => {
         setProduct(response.data);
         setLoading(false);
       })
-      .catch(() => { 
+      .catch(() => {  
         setError('Failed to fetch product details.');
         setLoading(false);
       });
