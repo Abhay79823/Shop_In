@@ -1,33 +1,49 @@
 
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { removeFromCart, updateCartQuantity } from '../redux/cartSlice';
+import API from '../services/api';
 import '../App.css';
 
-const CartItem = ({ item }) => {
-  const dispatch = useDispatch();
-
-  const handleRemoveFromCart = () => {
-    dispatch(removeFromCart(item.id));
+const CartItem = ({ item, onCartChange }) => {
+  const handleRemoveFromCart = async () => {
+    try {
+      await API.delete(`/cart/${item.product._id}`);
+      onCartChange(); // Notify parent to refresh cart
+    } catch (err) {
+      alert(err.response?.data?.message || 'Failed to remove item');
+    }
   };
 
-  const handleIncreaseQuantity = () => {
-    dispatch(updateCartQuantity({ id: item.id, quantity: item.quantity + 1 }));
+  const handleIncreaseQuantity = async () => {
+    try {
+      await API.put(`/cart/${item.product._id}`, {
+        quantity: item.quantity + 1,
+      });
+      onCartChange();
+    } catch (err) {
+      alert(err.response?.data?.message || 'Failed to update quantity');
+    }
   };
 
-  const handleDecreaseQuantity = () => {
+  const handleDecreaseQuantity = async () => {
     if (item.quantity > 1) {
-      dispatch(updateCartQuantity({ id: item.id, quantity: item.quantity - 1 }));
+      try {
+        await API.put(`/cart/${item.product._id}`, {
+          quantity: item.quantity - 1,
+        });
+        onCartChange();
+      } catch (err) {
+        alert(err.response?.data?.message || 'Failed to update quantity');
+      }
     } else {
-      dispatch(removeFromCart(item.id));
+      handleRemoveFromCart();
     }
   };
 
   return (
     <div className="cart-item">
-      <img src={item.thumbnail} alt={item.title} />
-      <h3>{item.title}</h3>
-      <p>${item.price}</p>
+      <img src={item.product.image} alt={item.product.name} />
+      <h3>{item.product.name}</h3>
+      <p>₹{item.product.price}</p>
       <div className="quantity-controls">
         <button onClick={handleDecreaseQuantity}>-</button>
         <span>{item.quantity}</span>

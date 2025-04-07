@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom'; 
 import Header from './components/Header';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import './App.css';
 
 const ProductList = lazy(() => import('./components/ProductList'));
@@ -14,7 +16,9 @@ const App = () => {
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/ShopIn/" element={<ProductList />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+          <Route path="/" element={<ProductList />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
