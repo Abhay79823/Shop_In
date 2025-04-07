@@ -20,7 +20,7 @@ const Header = () => {
     <header className="header">
       <nav>
         <ul>
-          <li><Link to="/">Home</Link></li>
+          <li><Link to="/Shop_In/">Home</Link></li>
           <li><Link to="/cart">Cart</Link></li>
 
           {!token && (
